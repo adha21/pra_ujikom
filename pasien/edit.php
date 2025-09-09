@@ -46,7 +46,8 @@ $alamat = $row['Alamat_Pasien'];
                         Form Edit Data Pasien
                     </div>
                     <div class="card-body">
-                        <form method="post" action="proses_form.php">
+                        <form method="post" action="proses_edit.php">
+                            <input type="hidden" value="<?=$id?>" name="idedit" id="">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Nama Pasien</label>
                                 <input type="text" name="nama" value="<?=$nama?>" placeholder="Masukkan Nama Lengkap" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -59,15 +60,15 @@ $alamat = $row['Alamat_Pasien'];
                                 <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
                                 <select name="jk" class="form-select" aria-label="Default select example">
                                     <option selected>- Pilih Jenis Kelamin -</option>
-                                    <option value="Laki-laki">Laki-laki</option>
-                                    <option value="Perempuan">Perempuan</option>
+                                    <option value="Laki-laki" <?=($jk=="Laki-laki") ? 'selected' : '' ?>>Laki-laki</option>
+                                    <option value="Perempuan" <?=($jk=="Perempuan") ? 'selected' : '' ?>>Perempuan</option>
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Alamat</label>
                                 <input type="text" name="alamat" value="<?=$alamat?>" placeholder="Masukkan Alamat" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
-                            <button type="submit" class="btn btn-primary">Tambah</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </form>
                     </div>
                 </div>
