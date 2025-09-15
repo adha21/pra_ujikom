@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasien</title>
+    <title>Berobat</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../assets/css/all.css">
 </head>
@@ -17,10 +17,10 @@
     <div class="container">
         <!-- Konten -->
         <div class="row">
-            <div class="col-8 m-auto mt-5">
+            <div class="col-12 m-auto mt-5">
                 <div class="card">
                     <div class="card-header">
-                        Data Pasien
+                        Data Berobat
                     </div>
                     <div class="card-body">
                         <a href="form.php" class="btn btn-primary mt-3">Tambah Data</a>
@@ -28,10 +28,15 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">No. Transaksi</th>
+                                    <th scope="col">Tanggal Berobat</th>
                                     <th scope="col">Nama Pasien</th>
-                                    <th scope="col">Tanggal Lahir</th>
-                                    <th scope="col">Jenis Kelamin</th>
-                                    <th scope="col">Alamat</th>
+                                    <th scope="col">Usia </th>
+                                    <th scope="col">Jenis Kelamin </th>                                   
+                                    <th scope="col">Keluhan</th>
+                                    <th scope="col">Nama Poli</th>
+                                    <th scope="col">Nama Dokter</th>
+                                    <th scope="col">Biaya Adm</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
@@ -41,7 +46,7 @@
                                 include('../koneksi.php');
 
                                 #2. menuliskan query
-                                $qry    = "SELECT * FROM pasien";
+                                $qry    = "SELECT * FROM berobat INNER JOIN pasien ON berobat.PasienKlinik_ID = pasien.PasienKlinik_ID INNER JOIN dokter ON berobat.Dokter_ID = dokter.Dokter_ID INNER JOIN poli ON dokter.Poli_ID = poli.Poli_ID";
 
                                 #3. menjalankan query
                                 $result = mysqli_query($koneksi, $qry);
@@ -52,20 +57,25 @@
                                 ?>
                                     <tr>
                                         <th scope="row"><?= $nomor++ ?></th>
+                                        <td><?= $row['No_Transaksi'] ?></td>
+                                        <td><?= $row['Tanggal_Berobat'] ?></td>
                                         <td><?= $row['Nama_pasienKlinik'] ?></td>
                                         <td><?= $row['Tanggal_LahirPasien'] ?></td>
                                         <td><?= $row['Jenis_kelaminPasien'] ?></td>
-                                        <td><?= $row['Alamat_Pasien'] ?></td>
+                                        <td><?= $row['Keluhan_Pasien'] ?></td>
+                                        <td><?= $row['Nama_Poli'] ?></td>
+                                        <td><?= $row['Nama_Dokter'] ?></td>
+                                        <td><?= $row['Biaya_Adm'] ?></td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="edit.php?id=<?= $row['pasienKlinik_ID'] ?>"><i class="fa fa-pen-to-square"></i></a>
+                                            <a class="btn btn-info btn-sm" href="edit.php?id=<?= $row['No_Transaksi'] ?>"><i class="fa fa-pen-to-square"></i></a>
 
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $row['pasienKlinik_ID'] ?>">
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $row['No_Transaksi'] ?>">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal<?= $row['pasienKlinik_ID'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal<?= $row['No_Transaksi'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -73,11 +83,11 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Yakin data pasien <?= $row['Nama_pasienKlinik'] ?> ingin dihapus?
+                                                            Yakin data <?= $row['Nama_pasienKlinik'] ?> ingin dihapus?
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <a href="hapus.php?id=<?= $row['pasienKlinik_ID'] ?>" class="btn btn-danger">Hapus</a>
+                                                            <a href="hapus.php?id=<?= $row['No_Transaksi'] ?>" class="btn btn-danger">Hapus</a>
                                                         </div>
                                                     </div>
                                                 </div>

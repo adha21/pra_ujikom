@@ -53,10 +53,9 @@
                                         <td><?= $row['Nama_Dokter'] ?></td>
                                         <td><?= $row['Nama_Poli'] ?></td>
                                         <td>
-                                            <a href="edit.php?id=<?=$row['Dokter_ID'] ?>" class="btn btn-info btn-sm">edit</a>
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal<?=$row['Dokter_ID'] ?>">
-                                                Hapus
+                                            <a class="btn btn-info btn-sm" href="edit.php?id=<?=$row['Dokter_ID'] ?>"><i class="fa fa-pen-to-square"></i></a>
+                                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$row['Dokter_ID'] ?>">
+                                                <i class="fa-solid fa-trash"></i>
                                             </button>
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModal<?=$row['Dokter_ID'] ?>" tabindex="-1"

@@ -14,7 +14,7 @@
                 <li><a class="dropdown-item" href="/pra_ujikom/pasien/index.php">Data Pasien</a></li>
                 <li><a class="dropdown-item" href="/pra_ujikom/dokter/index.php">Data Dokter</a></li>
                 <li><a class="dropdown-item" href="/pra_ujikom/poli/index.php">Data Poli</a></li>
-                <li><a class="dropdown-item" href="#">Berobat</a></li>
+                <li><a class="dropdown-item" href="/pra_ujikom/berobat/index.php">Berobat</a></li>
             </ul>
             </li>
             <li class="nav-item dropdown">
