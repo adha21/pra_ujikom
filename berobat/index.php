@@ -54,18 +54,31 @@
                                 #4. melakukan looping data pasien
                                 $nomor  = 1;
                                 foreach ($result as $row) {
+
+                                    //memformat ulang tanggal berobat
+                                    $tgl_berobat = date_create($row['Tanggal_Berobat']);
+                                    $tgl_berobat = date_format($tgl_berobat, 'd/m/Y');
+
+                                    //membuat usia pasien
+                                    $tanggal_lahir = new DateTime($row['Tanggal_LahirPasien']);
+                                    $sekarang = new DateTime("today");
+                                    $usia = $sekarang->diff($tanggal_lahir)->y;
+
+                                    //memformat biaya menjadi rupiah
+                                    $biaya = $row['Biaya_Adm'];
+                                    $biaya = number_format($biaya,0,',','.');
                                 ?>
                                     <tr>
                                         <th scope="row"><?= $nomor++ ?></th>
                                         <td><?= $row['No_Transaksi'] ?></td>
-                                        <td><?= $row['Tanggal_Berobat'] ?></td>
+                                        <td><?= $tgl_berobat?></td>
                                         <td><?= $row['Nama_pasienKlinik'] ?></td>
-                                        <td><?= $row['Tanggal_LahirPasien'] ?></td>
+                                        <td><?= $usia?></td>
                                         <td><?= $row['Jenis_kelaminPasien'] ?></td>
                                         <td><?= $row['Keluhan_Pasien'] ?></td>
                                         <td><?= $row['Nama_Poli'] ?></td>
                                         <td><?= $row['Nama_Dokter'] ?></td>
-                                        <td><?= $row['Biaya_Adm'] ?></td>
+                                        <td>Rp <?= $biaya?></td>
                                         <td>
                                             <a class="btn btn-info btn-sm" href="edit.php?id=<?= $row['No_Transaksi'] ?>"><i class="fa fa-pen-to-square"></i></a>
 
