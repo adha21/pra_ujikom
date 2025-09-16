@@ -100,6 +100,7 @@
                                 <input type="number" name="biaya" placeholder="Masukkan Biaya Administrasi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                             <button type="submit" class="btn btn-primary">Tambah</button>
+                            <button type="reset" class="btn btn-secondary">Clear</button>
                         </form>
                     </div>
                 </div>
